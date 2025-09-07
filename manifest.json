@@ -1,0 +1,16 @@
+{
+  "name": "Sopa de Letras",
+  "short_name": "Sopa",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f4f4",
+  "theme_color": "#4CAF50",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://play-lh.googleusercontent.com/UXLhaqxSwfH6KogPGCrCe4wKB6XT-Csrq4b1oclhO63BRbnmUnuW7HyskwfYsfslJQ",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
