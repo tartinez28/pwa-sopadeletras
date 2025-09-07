@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Sopa de Letras</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4CAF50">
 <style>
   body { font-family: Arial, sans-serif; text-align: center; background:#f4f4f4; }
   #grid { display: grid; grid-template-columns: repeat(10, 30px); gap: 2px; margin: 20px auto; }
@@ -54,6 +57,14 @@ for(let r=0;r<size;r++){
 // Lista de palabras
 wordsEl.innerHTML = "<b>Palabras:</b> "+words.join(", ");
 </script>
+
+<script>
+// Registro del service worker
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(() => console.log("Service Worker registrado"))
+    .catch(err => console.error("Error al registrar SW:", err));
+}
+</script>
 </body>
 </html>
-
