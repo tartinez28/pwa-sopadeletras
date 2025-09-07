@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sopa de Letras</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; background:#f4f4f4; }
+  #grid { display: grid; grid-template-columns: repeat(10, 30px); gap: 2px; margin: 20px auto; }
+  .cell { width:30px; height:30px; display:flex; align-items:center; justify-content:center;
+          background:#fff; border:1px solid #ccc; cursor:pointer; }
+  .cell.found { background: lightgreen; }
+  #words { margin-top: 15px; }
+</style>
+</head>
+<body>
+<h2>Sopa de Letras</h2>
+<div id="grid"></div>
+<div id="words"></div>
+
+<script>
+const size = 10;
+const gridEl = document.getElementById("grid");
+const wordsEl = document.getElementById("words");
+const words = ["HTML","CSS","JAVASCRIPT","WEB","CODIGO"];
+let grid = Array.from({length:size},()=>Array(size).fill(""));
+
+// Colocar palabras horizontalmente
+words.forEach((w,i)=>{
+  let row = i, col = 0;
+  for(let j=0;j<w.length && j<size;j++){
+    grid[row][col+j] = w[j];
+  }
+});
+
+// Rellenar espacios vacíos
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+for(let r=0;r<size;r++){
+  for(let c=0;c<size;c++){
+    if(grid[r][c]==="") grid[r][c]=letters[Math.floor(Math.random()*letters.length)];
+  }
+}
+
+// Pintar grid
+for(let r=0;r<size;r++){
+  for(let c=0;c<size;c++){
+    let cell = document.createElement("div");
+    cell.textContent = grid[r][c];
+    cell.className="cell";
+    cell.onclick=()=>cell.classList.toggle("found");
+    gridEl.appendChild(cell);
+  }
+}
+
+// Lista de palabras
+wordsEl.innerHTML = "<b>Palabras:</b> "+words.join(", ");
+</script>
+</body>
+</html>
+
